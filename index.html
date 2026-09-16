@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremiah Hiromi Effendi – Personal Portfolio</title>
+  <meta name="description" content="Personal portfolio of Jeremiah Hiromi Effendi, a business student combining business knowledge, digital skills, creativity, and basic web development to create practical and user-friendly digital solutions.">
+  <meta property="og:title" content="Jeremiah Hiromi Effendi – Personal Portfolio">
+  <meta property="og:description" content="Turning Business Ideas Into Digital Solutions - Personal portfolio of Jeremiah Hiromi Effendi.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       A. NAVBAR / HEADER
+       ========================================================================== -->
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <a href="#home" class="logo" id="brandLogo" aria-label="Jeremiah Effendi">
+        <span>Jeremiah Effendi</span>
+        <span class="logo-dot"></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- Dark / Light Mode Toggle Button -->
+          <button type="button" class="theme-toggle" id="themeToggleBtn" aria-label="Toggle light and dark mode">
+            <!-- Sun Icon (Light Mode Active) -->
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon Icon (Dark Mode Active) -->
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Prominent Contact Me CTA Button -->
+          <a href="#contact" class="btn btn-primary" id="navContactBtn">Contact Me</a>
+        </div>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link">Home</a></li>
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+      <li><a href="#services" class="mobile-nav-link">Services</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+
+    <div class="mobile-nav-footer">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <span style="font-weight: 500; font-size: 0.95rem;">Theme Mode</span>
+        <button type="button" class="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="width: 100%;">Contact Me</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         B. HERO SECTION
+         ========================================================================== -->
+    <section class="section hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Column: Hero Content & CTAs -->
+          <div class="hero-content fade-in-element">
+            <div class="hero-status-pill">
+              <span class="status-dot"></span>
+              <span>Business Student • Business & Digital Technology</span>
+            </div>
+
+            <h1 class="hero-name">Turning Business Ideas Into Digital Solutions.</h1>
+
+            <p class="hero-subheadline">
+              Business student with an interest in digital technology, web development, and practical business solutions.
+            </p>
+
+            <p class="hero-intro">
+              Hi, I’m Jeremiah Hiromi Effendi. I am a business student passionate about combining business knowledge with digital technology and creative problem-solving.
+            </p>
+
+            <!-- Core Value Proposition Box -->
+            <div class="hero-value-box">
+              <div class="hero-value-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>Core Value Proposition</span>
+              </div>
+              <p class="hero-value-text">
+                “A business student who combines business knowledge, digital skills, creativity, and basic web development to create practical and user-friendly digital solutions.”
+              </p>
+            </div>
+
+            <!-- Call to Actions: Primary "Download CV", Secondary "View My Projects" -->
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" id="heroDownloadCvBtn" aria-label="Download Jeremiah Hiromi Effendi CV">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download CV</span>
+              </button>
+
+              <a href="#projects" class="btn btn-secondary" id="heroViewProjectsBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>View My Projects</span>
+              </a>
+            </div>
+
+            <!-- Social Media Placeholders -->
+            <div class="hero-socials">
+              <span class="hero-socials-label">Connect:</span>
+              <a href="#contact" class="social-pill" title="LinkedIn Profile Placeholder">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="#contact" class="social-pill" title="GitHub Profile Placeholder">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="#contact" class="social-pill" title="Contact Email Placeholder">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Professional Profile Card -->
+          <div class="hero-media fade-in-element">
+            <div class="profile-card-wrapper">
+              <div class="profile-card-glow"></div>
+              <div class="profile-card">
+                <!-- Professional Profile Photo Placeholder -->
+                <div class="profile-photo-placeholder" id="profilePhotoPlaceholder">
+                  <div class="profile-avatar-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <div class="profile-placeholder-label">Jeremiah Hiromi Effendi</div>
+                  <span class="profile-badge-pill">Business & Tech Student</span>
+                </div>
+
+                <div class="profile-card-meta">
+                  <div class="meta-row">
+                    <span class="meta-label">Student ID</span>
+                    <span class="meta-value">131620260003</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">University</span>
+                    <span class="meta-value">Politeknik Internasional Bali</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Academic Status</span>
+                    <span class="meta-value">Business Student</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Core Niche</span>
+                    <span class="meta-value">Business & Digital Tech</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         C. ABOUT ME SECTION
+         ========================================================================== -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header fade-in-element">
+          <span class="section-badge">Student Profile</span>
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">
+            A business student passionate about merging commercial insights with digital technology, web development, and creative problem-solving.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left: Narrative & Academic Status Details -->
+          <div class="about-narrative fade-in-element">
+            <h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 12px;">Bridging Business & Technology</h3>
+            <p>
+              I am Jeremiah Hiromi Effendi, a business student interested in the intersection between business and digital technology. I enjoy learning how technology can be used to solve practical problems, improve user experiences, and support business objectives.
+            </p>
+            <p>
+              Through my academic activities and projects, I continue developing skills in business analysis, digital technology, web development, presentation, and creative problem-solving.
+            </p>
+
+            <div class="about-profile-list" style="margin-top: 16px;">
+              <div class="about-profile-item">
+                <span class="profile-item-label">Full Name</span>
+                <span class="profile-item-value">Jeremiah Hiromi Effendi</span>
+              </div>
+              <div class="about-profile-item">
+                <span class="profile-item-label">Student ID (NIM)</span>
+                <span class="profile-item-value">131620260003</span>
+              </div>
+              <div class="about-profile-item">
+                <span class="profile-item-label">Academic Status</span>
+                <span class="profile-item-value">Business Student</span>
+              </div>
+              <div class="about-profile-item">
+                <span class="profile-item-label">Interests</span>
+                <span class="profile-item-value">Business, Digital Technology, Web Development, Creative Problem-Solving</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Animated Skill / Progress Indicators -->
+          <div class="about-details-card fade-in-element" id="aboutSkillsWrap">
+            <div class="skills-card-header">
+              <h4 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 6px;">Skill Competency Indicators</h4>
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">
+                Self-assessed academic proficiency metrics across foundational business and digital disciplines.
+              </p>
+            </div>
+
+            <div class="skills-progress-list">
+              <!-- 1. Business & Management (85%) -->
+              <div class="skill-indicator-item">
+                <div class="skill-progress-meta">
+                  <span class="skill-name">Business & Management</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar-fill" data-progress="85"></div>
+                </div>
+              </div>
+
+              <!-- 2. HTML & CSS (80%) -->
+              <div class="skill-indicator-item">
+                <div class="skill-progress-meta">
+                  <span class="skill-name">HTML & CSS</span>
+                  <span class="skill-pct">80%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar-fill" data-progress="80"></div>
+                </div>
+              </div>
+
+              <!-- 3. JavaScript (75%) -->
+              <div class="skill-indicator-item">
+                <div class="skill-progress-meta">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-pct">75%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar-fill" data-progress="75"></div>
+                </div>
+              </div>
+
+              <!-- 4. Data Analysis (70%) -->
+              <div class="skill-indicator-item">
+                <div class="skill-progress-meta">
+                  <span class="skill-name">Data Analysis</span>
+                  <span class="skill-pct">70%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar-fill accent-fill" data-progress="70"></div>
+                </div>
+              </div>
+
+              <!-- 5. Communication & Presentation (85%) -->
+              <div class="skill-indicator-item">
+                <div class="skill-progress-meta">
+                  <span class="skill-name">Communication & Presentation</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar-fill" data-progress="85"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         D. SERVICES / SKILLS SECTION
+         ========================================================================== -->
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-header fade-in-element">
+          <span class="section-badge">Capabilities</span>
+          <h2 class="section-title">Skills & What I Can Do</h2>
+          <p class="section-subtitle">
+            Integrating analytical commercial mindsets with modern web engineering to build clean, functional digital touchpoints.
+          </p>
+        </div>
+
+        <!-- 3-Column Responsive Card Layout -->
+        <div class="services-grid">
+          <!-- Card 1: Business Analysis -->
+          <article class="service-card fade-in-element">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">Business Analysis</h3>
+            <p class="service-desc">
+              Understanding business problems, organizing information, and developing practical insights to support decision-making.
+            </p>
+            <div class="service-features-mini">
+              <span>• Problem Structuring</span>
+              <span>• Data Organization</span>
+              <span>• Decision Support</span>
+            </div>
+          </article>
+
+          <!-- Card 2: Web Development -->
+          <article class="service-card fade-in-element">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title">Web Development</h3>
+            <p class="service-desc">
+              Creating responsive and user-friendly front-end websites using HTML, CSS, and JavaScript.
+            </p>
+            <div class="service-features-mini">
+              <span>• Responsive Layouts</span>
+              <span>• Accessible UI</span>
+              <span>• Clean Vanilla Code</span>
+            </div>
+          </article>
+
+          <!-- Card 3: Digital Solutions -->
+          <article class="service-card fade-in-element">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="service-title">Digital Solutions</h3>
+            <p class="service-desc">
+              Combining business concepts and digital technology to create practical and engaging solutions.
+            </p>
+            <div class="service-features-mini">
+              <span>• Practical Prototyping</span>
+              <span>• User-Centric Design</span>
+              <span>• Strategic Execution</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Skills Anchor for Navigation -->
+    <div id="skills" style="position: relative; top: -76px; visibility: hidden;"></div>
+
+    <!-- ==========================================================================
+         E. PROJECTS / PORTFOLIO SECTION
+         ========================================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header fade-in-element">
+          <span class="section-badge">Case Studies & Prototypes</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">
+            A collection of practical projects demonstrating front-end web development, dashboard visual structure, and business landing page architecture.
+          </p>
+        </div>
+
+        <!-- 3 Project Cards Grid -->
+        <div class="projects-grid">
+          <!-- Project 1: Personal Portfolio Website -->
+          <article class="project-card fade-in-element">
+            <div class="project-image-placeholder">
+              <svg class="project-image-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span class="project-img-label">Personal Portfolio Website</span>
+              <span class="project-img-sub">Web Application Preview</span>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+              </div>
+
+              <h3 class="project-title">Personal Portfolio Website</h3>
+              <p class="project-desc">
+                A responsive single-page personal portfolio designed to present personal information, skills, projects, and contact information in a professional digital format.
+              </p>
+
+              <div class="project-card-footer">
+                <span class="project-status-note">Active Prototype</span>
+                <button type="button" class="btn btn-secondary btn-view-project" data-project-id="1" aria-label="View details for Personal Portfolio Website">
+                  <span>View Details</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Business Data Dashboard -->
+          <article class="project-card fade-in-element">
+            <div class="project-image-placeholder">
+              <svg class="project-image-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+              <span class="project-img-label">Business Data Dashboard</span>
+              <span class="project-img-sub">Analytics UI Concept</span>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="tag">Data Visualization</span>
+                <span class="tag">UI Design</span>
+                <span class="tag">Business Analytics</span>
+              </div>
+
+              <h3 class="project-title">Business Data Dashboard</h3>
+              <p class="project-desc">
+                A conceptual dashboard designed to organize and visualize business-related information in a clear and accessible interface.
+              </p>
+
+              <div class="project-card-footer">
+                <span class="project-status-note">UI Concept</span>
+                <button type="button" class="btn btn-secondary btn-view-project" data-project-id="2" aria-label="View details for Business Data Dashboard">
+                  <span>View Details</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Business Landing Page -->
+          <article class="project-card fade-in-element">
+            <div class="project-image-placeholder">
+              <svg class="project-image-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <line x1="4" y1="9" x2="20" y2="9"></line>
+                <line x1="9" y1="20" x2="9" y2="9"></line>
+              </svg>
+              <span class="project-img-label">Business Landing Page</span>
+              <span class="project-img-sub">Conversion UI Model</span>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Responsive Design</span>
+              </div>
+
+              <h3 class="project-title">Business Landing Page</h3>
+              <p class="project-desc">
+                A modern landing page concept designed to communicate a business value proposition and guide visitors toward a clear call to action.
+              </p>
+
+              <div class="project-card-footer">
+                <span class="project-status-note">Landing Prototype</span>
+                <button type="button" class="btn btn-secondary btn-view-project" data-project-id="3" aria-label="View details for Business Landing Page">
+                  <span>View Details</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         F. TESTIMONIALS SECTION
+         ========================================================================== -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header fade-in-element">
+          <span class="section-badge">Feedback & References</span>
+          <h2 class="section-title">What People Say</h2>
+          <p class="section-subtitle">
+            Sample academic and peer recommendations demonstrating collaborative attitude, reliability, and technical aptitude.
+          </p>
+          <div style="margin-top: 10px;">
+            <span class="sample-notice-pill">Academic Portfolio Demonstration • Sample Testimonials</span>
+          </div>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial Card 1 -->
+          <article class="testimonial-card fade-in-element">
+            <div class="testimonial-top">
+              <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-8.983z"></path>
+              </svg>
+              <span class="sample-badge">Sample Placeholder</span>
+            </div>
+
+            <p class="testimonial-quote">
+              “Jeremiah demonstrates a strong willingness to learn and consistently approaches projects with curiosity and responsibility.”
+            </p>
+            
+            <div class="testimonial-author">
+              <div class="author-avatar-placeholder">LM</div>
+              <div class="author-info">
+                <span class="author-name">Lecturer / Academic Mentor</span>
+                <span class="author-role">Academic Mentor (Sample Testimonial)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial Card 2 -->
+          <article class="testimonial-card fade-in-element">
+            <div class="testimonial-top">
+              <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-8.983z"></path>
+              </svg>
+              <span class="sample-badge">Sample Placeholder</span>
+            </div>
+
+            <p class="testimonial-quote">
+              “Collaborative, organized, and always keen on bridging business requirements with clean digital implementation.”
+            </p>
+            
+            <div class="testimonial-author">
+              <div class="author-avatar-placeholder">PT</div>
+              <div class="author-info">
+                <span class="author-name">Project Teammate</span>
+                <span class="author-role">Collaborative Peer (Sample Testimonial)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial Card 3 -->
+          <article class="testimonial-card fade-in-element">
+            <div class="testimonial-top">
+              <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-8.983z"></path>
+              </svg>
+              <span class="sample-badge">Sample Placeholder</span>
+            </div>
+
+            <p class="testimonial-quote">
+              “Brings great energy and problem-solving creativity to group discussions and technology coursework.”
+            </p>
+            
+            <div class="testimonial-author">
+              <div class="author-avatar-placeholder">CM</div>
+              <div class="author-info">
+                <span class="author-name">Classmate</span>
+                <span class="author-role">Student Peer (Sample Testimonial)</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         G. CONTACT FORM SECTION
+         ========================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header fade-in-element">
+          <span class="section-badge">Direct Communication</span>
+          <h2 class="section-title">Let’s Connect</h2>
+          <p class="section-subtitle">
+            Have a project, collaboration idea, or question? Feel free to get in touch.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left Column: Information & Connection Channels -->
+          <div class="contact-info-card fade-in-element">
+            <h3 class="contact-info-title">Contact Information</h3>
+            <p class="contact-info-desc">
+              Whether you are a recruiter, lecturer, business professional, or fellow student, I welcome constructive dialogue and collaborative project discussions.
+            </p>
+
+            <div class="contact-channels">
+              <div class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="channel-content">
+                  <span class="channel-label">Email Address</span>
+                  <span class="channel-value">effendijeremiah88@gmail.com</span>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="channel-content">
+                  <span class="channel-label">University</span>
+                  <span class="channel-value">Politeknik Internasional Bali</span>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </div>
+                <div class="channel-content">
+                  <span class="channel-label">Niche & Focus</span>
+                  <span class="channel-value">Business & Digital Technology</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Target Audience Notice -->
+            <div class="audience-box">
+              <span class="audience-badge">Target Audience Welcome</span>
+              <p class="audience-text">
+                Recruiters, lecturers, business professionals, potential collaborators, and fellow students.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Validated Contact Form -->
+          <div class="contact-form-card fade-in-element">
+            <h3 style="font-size: 1.35rem; margin-bottom: 20px;">Send a Message</h3>
+            
+            <form id="contactForm" novalidate>
+              <!-- Full Name Field -->
+              <div class="form-group">
+                <label for="contactName" class="form-label">Full Name <span class="required-star">*</span></label>
+                <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                <div class="form-error-msg" id="nameError">Please enter your full name.</div>
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email Address <span class="required-star">*</span></label>
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. alex@example.com" required autocomplete="email">
+                <div class="form-error-msg" id="emailError">Please enter a valid email address (e.g. name@domain.com).</div>
+              </div>
+
+              <!-- Project Scope Field -->
+              <div class="form-group">
+                <label for="contactScope" class="form-label">Project Scope <span class="required-star">*</span></label>
+                <select id="contactScope" name="scope" class="form-select" required>
+                  <option value="" disabled selected>Select project scope...</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Business Analysis">Business Analysis</option>
+                  <option value="Digital Solutions">Digital Solutions</option>
+                  <option value="Academic Collaboration">Academic Collaboration</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                </select>
+                <div class="form-error-msg" id="scopeError">Please select the project scope or inquiry type.</div>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Message <span class="required-star">*</span></label>
+                <textarea id="contactMessage" name="message" class="form-textarea" rows="4" placeholder="Describe your project, question, or collaboration opportunity..." required></textarea>
+                <div class="form-error-msg" id="messageError">Please enter your message text.</div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary" id="btnSendMessage" style="width: 100%;">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       H. FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand & Academic Information -->
+        <div class="footer-brand">
+          <h4>Jeremiah Hiromi Effendi</h4>
+          <p style="margin-bottom: 6px; font-weight: 500; color: var(--text-primary);">
+            Business & Digital Technology • Student Portfolio
+          </p>
+          <p style="margin-bottom: 12px;">
+            Politeknik Internasional Bali • Student ID: 131620260003
+          </p>
+          <p class="footer-tagline">
+            “Turning Business Ideas Into Digital Solutions.”
+          </p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div>
+          <div class="footer-column-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#about" class="footer-link">About Me</a></li>
+            <li><a href="#skills" class="footer-link">Skills & Competencies</a></li>
+            <li><a href="#services" class="footer-link">Services</a></li>
+            <li><a href="#projects" class="footer-link">Featured Projects</a></li>
+            <li><a href="#testimonials" class="footer-link">Testimonials</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media / Direct Email Channels -->
+        <div>
+          <div class="footer-column-title">Connect & Inquiries</div>
+          <ul class="footer-links">
+            <li><a href="mailto:effendijeremiah88@gmail.com" class="footer-link">effendijeremiah88@gmail.com</a></li>
+            <li><a href="#contact" class="footer-link">LinkedIn: Jeremiah Hiromi Effendi</a></li>
+            <li><a href="#contact" class="footer-link">GitHub: Jeremiah Effendi</a></li>
+            <li><a href="#contact" class="footer-link">Campus: Politeknik Internasional Bali</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>© 2026 Jeremiah Hiromi Effendi. All Rights Reserved.</p>
+        <p>Jeremiah Hiromi Effendi – Personal Portfolio</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       BACK TO TOP BUTTON
+       ========================================================================== -->
+  <button type="button" class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- ==========================================================================
+       PROJECT DETAIL MODAL (Fully Accessible & Dynamic)
+       ========================================================================== -->
+  <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" aria-hidden="true">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn" id="projectModalClose" aria-label="Close project modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-content">
+        <!-- Project Preview Graphic in Modal -->
+        <div class="modal-project-img">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          <span style="font-weight: 600; font-size: 1rem;" id="modalImageLabel">Project Detail View</span>
+        </div>
+
+        <!-- Project Title -->
+        <h3 class="modal-project-title" id="modalProjectTitle">Project Title</h3>
+
+        <!-- Technologies Used Tags -->
+        <div class="project-tags" id="modalTechTags" style="margin-bottom: 16px;"></div>
+
+        <!-- Detailed Description -->
+        <div class="modal-info-block" style="margin-bottom: 16px;">
+          <div class="modal-info-label">Detailed Description</div>
+          <p class="modal-info-text" id="modalProjectDesc">Project overview...</p>
+        </div>
+
+        <!-- Project Objective -->
+        <div class="modal-info-block" style="margin-bottom: 16px;">
+          <div class="modal-info-label">Project Objective</div>
+          <p class="modal-info-text" id="modalObjective">Project goal and purpose...</p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="modal-info-block" style="margin-bottom: 20px;">
+          <div class="modal-info-label">Key Features</div>
+          <ul class="modal-features-list" id="modalFeaturesList"></ul>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end;">
+          <button type="button" class="btn btn-secondary" id="modalCloseSecondaryBtn">
+            Close Window
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CONTACT SUCCESS MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-hidden="true">
+    <div class="modal-container" style="max-width: 480px;">
+      <button type="button" class="modal-close-btn" id="successModalClose" aria-label="Close confirmation modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-success-box">
+        <div class="success-icon-badge">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="success-title" id="successTitle">Message Sent!</h3>
+        <p class="success-message">Thank you for contacting me. I will get back to you soon.</p>
+        <button type="button" class="btn btn-primary" id="successModalOkBtn" style="min-width: 140px;">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TOAST NOTIFICATION (For Download CV Interaction)
+       ========================================================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Vanilla JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
