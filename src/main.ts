@@ -48,6 +48,82 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // --------------------------------------------------------------------------
+  // 2B. AUTHENTIC PROFILE PHOTO UPLOADER & LOCAL STORAGE
+  // --------------------------------------------------------------------------
+  const PHOTO_STORAGE_KEY = 'jeremiah_original_profile_photo';
+  const profilePhotoImg = document.getElementById('profilePhotoImg') as HTMLImageElement | null;
+  const profilePhotoContainer = document.getElementById('profilePhotoContainer');
+  const uploadPhotoBtn = document.getElementById('uploadPhotoBtn') as HTMLButtonElement | null;
+  const profilePhotoInput = document.getElementById('profilePhotoInput') as HTMLInputElement | null;
+
+  // Load saved authentic photo if present
+  const savedPhoto = localStorage.getItem(PHOTO_STORAGE_KEY);
+  if (savedPhoto && profilePhotoImg) {
+    profilePhotoImg.src = savedPhoto;
+  }
+
+  const handlePhotoFile = (file: File): void => {
+    if (!file.type.startsWith('image/')) {
+      showToast('⚠️ Mohon pilih file gambar (.jpg, .png, .jpeg)');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target?.result as string;
+      if (dataUrl && profilePhotoImg) {
+        profilePhotoImg.src = dataUrl;
+        try {
+          localStorage.setItem(PHOTO_STORAGE_KEY, dataUrl);
+        } catch (err) {
+          console.warn('Could not save to localStorage', err);
+        }
+        showToast('✅ Foto asli berhasil diterapkan tanpa editan!');
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  if (uploadPhotoBtn && profilePhotoInput) {
+    uploadPhotoBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      profilePhotoInput.click();
+    });
+  }
+
+  if (profilePhotoContainer && profilePhotoInput) {
+    profilePhotoContainer.addEventListener('click', () => {
+      profilePhotoInput.click();
+    });
+
+    profilePhotoInput.addEventListener('change', () => {
+      const file = profilePhotoInput.files?.[0];
+      if (file) {
+        handlePhotoFile(file);
+      }
+    });
+
+    // Drag and drop support
+    profilePhotoContainer.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      profilePhotoContainer.classList.add('is-dragover');
+    });
+
+    profilePhotoContainer.addEventListener('dragleave', () => {
+      profilePhotoContainer.classList.remove('is-dragover');
+    });
+
+    profilePhotoContainer.addEventListener('drop', (e) => {
+      e.preventDefault();
+      profilePhotoContainer.classList.remove('is-dragover');
+      const file = e.dataTransfer?.files?.[0];
+      if (file) {
+        handlePhotoFile(file);
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
   // 3. MOBILE NAVIGATION DRAWER & HAMBURGER
   // --------------------------------------------------------------------------
   const menuToggle = document.getElementById('menuToggle') as HTMLButtonElement | null;
@@ -559,6 +635,101 @@ Generated from Jeremiah Hiromi Effendi's Official Portfolio
 
   if (heroDownloadCvBtn) {
     heroDownloadCvBtn.addEventListener('click', triggerCvDownload);
+  }
+
+  // --------------------------------------------------------------------------
+  // 9B. ARSENAL (SKILLS) CAROUSEL & FILTER TABS (From Reference Layout)
+  // --------------------------------------------------------------------------
+  const arsenalTabs = document.querySelectorAll<HTMLButtonElement>('.arsenal-tab-pill');
+  const arsenalCards = document.querySelectorAll<HTMLElement>('.arsenal-card');
+  const arsenalViewport = document.getElementById('arsenalViewport') as HTMLElement | null;
+  const arsenalPrevBtn = document.getElementById('arsenalPrevBtn') as HTMLButtonElement | null;
+  const arsenalNextBtn = document.getElementById('arsenalNextBtn') as HTMLButtonElement | null;
+
+  if (arsenalTabs.length > 0 && arsenalCards.length > 0) {
+    arsenalTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const filterValue = tab.getAttribute('data-filter') || 'all';
+
+        // Update active tab styles and accessibility
+        arsenalTabs.forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Filter cards
+        arsenalCards.forEach((card) => {
+          const cardCategory = card.getAttribute('data-category');
+          if (filterValue === 'all' || cardCategory === filterValue) {
+            card.classList.remove('is-hidden');
+            // Trigger progress fill if animated
+            const bar = card.querySelector<HTMLElement>('.arsenal-progress-bar');
+            if (bar) {
+              const targetWidth = bar.getAttribute('data-progress');
+              if (targetWidth) {
+                bar.style.width = `${targetWidth}%`;
+              }
+            }
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+
+        // Reset scroll position to start
+        if (arsenalViewport) {
+          arsenalViewport.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  // Prev / Next scroll buttons
+  if (arsenalViewport) {
+    const scrollStep = 250;
+
+    if (arsenalPrevBtn) {
+      arsenalPrevBtn.addEventListener('click', () => {
+        arsenalViewport.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+      });
+    }
+
+    if (arsenalNextBtn) {
+      arsenalNextBtn.addEventListener('click', () => {
+        arsenalViewport.scrollBy({ left: scrollStep, behavior: 'smooth' });
+      });
+    }
+
+    // Drag-to-scroll functionality for mouse users
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
+
+    arsenalViewport.addEventListener('mousedown', (e: MouseEvent) => {
+      isDown = true;
+      arsenalViewport.style.cursor = 'grabbing';
+      startX = e.pageX - arsenalViewport.offsetLeft;
+      scrollLeftPos = arsenalViewport.scrollLeft;
+    });
+
+    arsenalViewport.addEventListener('mouseleave', () => {
+      isDown = false;
+      arsenalViewport.style.cursor = '';
+    });
+
+    arsenalViewport.addEventListener('mouseup', () => {
+      isDown = false;
+      arsenalViewport.style.cursor = '';
+    });
+
+    arsenalViewport.addEventListener('mousemove', (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - arsenalViewport.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      arsenalViewport.scrollLeft = scrollLeftPos - walk;
+    });
   }
 
   // --------------------------------------------------------------------------
