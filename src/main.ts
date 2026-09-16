@@ -14,22 +14,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   await getProjects();
 
   // --------------------------------------------------------------------------
-  // 2. DARK / LIGHT MODE SWITCHER
+  // 2. NAVY BLUE & LIGHT THEME SWITCHER
   // --------------------------------------------------------------------------
-  const THEME_STORAGE_KEY = 'jeremiah_portfolio_theme';
+  const THEME_STORAGE_KEY = 'jeremiah_portfolio_theme_v2';
   const themeToggles = document.querySelectorAll<HTMLButtonElement>('.theme-toggle');
 
   const getPreferredTheme = (): string => {
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    if (savedTheme) {
-      return savedTheme;
+    if (savedTheme === 'light') {
+      return 'light';
     }
-    return 'light';
+    return 'navy';
   };
 
   const applyTheme = (theme: string): void => {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
     } else {
       document.documentElement.removeAttribute('data-theme');
     }
@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   themeToggles.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const newTheme = isLight ? 'navy' : 'light';
       applyTheme(newTheme);
-      showToast(newTheme === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
+      showToast(newTheme === 'navy' ? '🌊 Tema Biru Navy aktif' : '☀️ Mode Terang diaktifkan');
     });
   });
 
