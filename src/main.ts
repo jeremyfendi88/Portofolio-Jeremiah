@@ -1,5 +1,4 @@
 import { submitContactInquiry } from './services/contactService';
-import { findProjectById, getProjects, ProjectItem } from './services/projectService';
 import { isSupabaseConfigured } from './lib/supabase';
 
 // Mark document as JS-ready for progressive enhancement
@@ -7,11 +6,6 @@ document.documentElement.classList.add('js-ready');
 
 document.addEventListener('DOMContentLoaded', async () => {
   'use strict';
-
-  // --------------------------------------------------------------------------
-  // 1. DYNAMIC PROJECTS INITIALIZATION
-  // --------------------------------------------------------------------------
-  await getProjects();
 
   // --------------------------------------------------------------------------
   // 2. NAVY BLUE & LIGHT THEME SWITCHER
@@ -48,12 +42,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // --------------------------------------------------------------------------
-  // 2B. AUTHENTIC PROFILE PHOTO UPLOADER & LOCAL STORAGE
+  // 2B. AUTHENTIC PROFILE PHOTO STORAGE
   // --------------------------------------------------------------------------
   const PHOTO_STORAGE_KEY = 'jeremiah_original_profile_photo';
   const profilePhotoImg = document.getElementById('profilePhotoImg') as HTMLImageElement | null;
   const profilePhotoContainer = document.getElementById('profilePhotoContainer');
-  const uploadPhotoBtn = document.getElementById('uploadPhotoBtn') as HTMLButtonElement | null;
   const profilePhotoInput = document.getElementById('profilePhotoInput') as HTMLInputElement | null;
 
   // Load saved authentic photo if present
@@ -78,18 +71,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (err) {
           console.warn('Could not save to localStorage', err);
         }
-        showToast('✅ Foto asli berhasil diterapkan tanpa editan!');
+        showToast('✅ Foto profil asli berhasil diperbarui');
       }
     };
     reader.readAsDataURL(file);
   };
-
-  if (uploadPhotoBtn && profilePhotoInput) {
-    uploadPhotoBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      profilePhotoInput.click();
-    });
-  }
 
   if (profilePhotoContainer && profilePhotoInput) {
     profilePhotoContainer.addEventListener('click', () => {
@@ -243,89 +229,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     fadeElements.forEach((el) => fadeObserver.observe(el));
   } else {
     fadeElements.forEach((el) => el.classList.add('is-visible'));
-  }
-
-  // --------------------------------------------------------------------------
-  // 7. PROJECT DETAIL MODAL LOGIC
-  // --------------------------------------------------------------------------
-  const projectModal = document.getElementById('projectModal') as HTMLElement | null;
-  const projectModalClose = document.getElementById('projectModalClose') as HTMLButtonElement | null;
-  const modalCloseSecondaryBtn = document.getElementById('modalCloseSecondaryBtn') as HTMLButtonElement | null;
-  const modalProjectTitle = document.getElementById('modalProjectTitle') as HTMLElement | null;
-  const modalTechTags = document.getElementById('modalTechTags') as HTMLElement | null;
-  const modalProjectDesc = document.getElementById('modalProjectDesc') as HTMLElement | null;
-  const modalObjective = document.getElementById('modalObjective') as HTMLElement | null;
-  const modalFeaturesList = document.getElementById('modalFeaturesList') as HTMLElement | null;
-  const modalImageLabel = document.getElementById('modalImageLabel') as HTMLElement | null;
-
-  const openProjectModal = (projectId: number): void => {
-    const project = findProjectById(projectId);
-    if (!project || !projectModal) return;
-
-    if (modalProjectTitle) modalProjectTitle.textContent = project.title;
-    if (modalImageLabel) modalImageLabel.textContent = `${project.title} — Detail View`;
-    if (modalProjectDesc) modalProjectDesc.textContent = project.description;
-    if (modalObjective) modalObjective.textContent = project.objective;
-
-    if (modalTechTags) {
-      modalTechTags.innerHTML = '';
-      project.tags.forEach((tag) => {
-        const tagSpan = document.createElement('span');
-        tagSpan.className = 'tag';
-        tagSpan.textContent = tag;
-        modalTechTags.appendChild(tagSpan);
-      });
-    }
-
-    if (modalFeaturesList) {
-      modalFeaturesList.innerHTML = '';
-      project.features.forEach((feature) => {
-        const li = document.createElement('li');
-        li.textContent = feature;
-        modalFeaturesList.appendChild(li);
-      });
-    }
-
-    projectModal.classList.add('is-active');
-    projectModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    setTimeout(() => {
-      projectModalClose?.focus();
-    }, 50);
-  };
-
-  const closeProjectModal = (): void => {
-    if (!projectModal) return;
-    projectModal.classList.remove('is-active');
-    projectModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-
-  const viewProjectButtons = document.querySelectorAll<HTMLButtonElement>('.btn-view-project');
-  viewProjectButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const projectId = Number(btn.getAttribute('data-project-id'));
-      if (projectId) {
-        openProjectModal(projectId);
-      }
-    });
-  });
-
-  if (projectModalClose) {
-    projectModalClose.addEventListener('click', closeProjectModal);
-  }
-
-  if (modalCloseSecondaryBtn) {
-    modalCloseSecondaryBtn.addEventListener('click', closeProjectModal);
-  }
-
-  if (projectModal) {
-    projectModal.addEventListener('click', (e: MouseEvent) => {
-      if (e.target === projectModal) {
-        closeProjectModal();
-      }
-    });
   }
 
   // --------------------------------------------------------------------------
@@ -491,9 +394,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Global ESC Key Listener
   document.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      if (projectModal && projectModal.classList.contains('is-active')) {
-        closeProjectModal();
-      }
       if (successModal && successModal.classList.contains('is-active')) {
         closeSuccessModal();
       }
@@ -501,9 +401,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // --------------------------------------------------------------------------
-  // 9. DOWNLOAD CV INTERACTION & TOAST SYSTEM
+  // 9. TOAST NOTIFICATION SYSTEM
   // --------------------------------------------------------------------------
-  const heroDownloadCvBtn = document.getElementById('heroDownloadCvBtn') as HTMLButtonElement | null;
   const toastContainer = document.getElementById('toastContainer') as HTMLElement | null;
 
   function showToast(message: string, duration: number = 3500): void {
@@ -533,108 +432,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       }, 300);
     }, duration);
-  }
-
-  const triggerCvDownload = (): void => {
-    const cvContent = `================================================================================
-JEREMIAH HIROMI EFFENDI
-Business & Digital Technology | Politeknik Internasional Bali
-================================================================================
-
-CONTACT INFORMATION
---------------------------------------------------------------------------------
-Full Name: Jeremiah Hiromi Effendi
-Student ID (NIM): 131620260003
-University: Politeknik Internasional Bali (Semester 1)
-Email: effendijeremiah88@gmail.com
-Field / Industry: Business & Digital Technology
-
-CORE VALUE PROPOSITION
---------------------------------------------------------------------------------
-"A business student who combines business knowledge, digital skills,
-creativity, and basic web development to create practical and user-friendly
-digital solutions."
-
-PROFILE SUMMARY
---------------------------------------------------------------------------------
-I am Jeremiah Hiromi Effendi, a business student interested in the intersection
-between business and digital technology. I enjoy learning how technology can be
-used to solve practical problems, improve user experiences, and support business
-objectives. Through my academic activities and projects, I continue developing
-skills in business analysis, digital technology, web development, presentation,
-and creative problem-solving.
-
-CORE COMPETENCIES & PROFICIENCY
---------------------------------------------------------------------------------
-• Business & Management               [85%]
-• Communication & Presentation        [85%]
-• HTML & CSS                          [80%]
-• JavaScript                          [75%]
-• Data Analysis                       [70%]
-
-SERVICES & CAPABILITIES
---------------------------------------------------------------------------------
-1. Business Analysis
-   Understanding business problems, organizing information, and developing
-   practical insights to support decision-making.
-
-2. Web Development
-   Creating responsive and user-friendly front-end websites using HTML, CSS,
-   and JavaScript.
-
-3. Digital Solutions
-   Combining business concepts and digital technology to create practical
-   and engaging solutions.
-
-FEATURED PROJECTS
---------------------------------------------------------------------------------
-1. Personal Portfolio Website
-   Technologies: HTML5, CSS3, JavaScript
-   Description: Responsive single-page web portfolio designed to present
-   academic credentials, skills, and projects with dark/light themes.
-
-2. Business Data Dashboard
-   Technologies: Data Visualization, UI Design, Business Analytics
-   Description: Conceptual dashboard designed to organize and visualize
-   business-related information and KPIs in a clear, accessible interface.
-
-3. Business Landing Page
-   Technologies: HTML5, CSS3, Responsive Design
-   Description: Modern conversion-focused landing page communicating value
-   propositions and driving visitor engagement.
-
-ACADEMIC REFERENCES & RECOMMENDATIONS
---------------------------------------------------------------------------------
-• Lecturer / Academic Mentor:
-  "Jeremiah demonstrates a strong willingness to learn and consistently
-  approaches projects with curiosity and responsibility."
-• Project Teammate:
-  "Collaborative, organized, and always keen on bridging business requirements
-  with clean digital implementation."
-• Classmate:
-  "Brings great energy and problem-solving creativity to group discussions
-  and technology coursework."
-
-================================================================================
-Generated from Jeremiah Hiromi Effendi's Official Portfolio
-© 2026 Jeremiah Hiromi Effendi. All Rights Reserved.
-================================================================================`;
-
-    const blob = new Blob([cvContent], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Jeremiah_Hiromi_Effendi_CV.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-
-    showToast('📄 Downloaded Jeremiah Hiromi Effendi CV');
-  };
-
-  if (heroDownloadCvBtn) {
-    heroDownloadCvBtn.addEventListener('click', triggerCvDownload);
   }
 
   // --------------------------------------------------------------------------
